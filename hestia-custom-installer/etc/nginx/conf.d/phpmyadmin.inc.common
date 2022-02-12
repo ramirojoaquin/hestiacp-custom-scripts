@@ -1,0 +1,26 @@
+# Block directory listing
+autoindex off;
+
+# Block access to sensitive files
+location ~* (settings\.php$|sites/(.+)\.php$|cache/(.+)\.php$|vendor/(.+)\.php$|patches.*|backup.*|\.(htaccess|htpasswd|inc|info|make|engine|install|module|en|txt|ini|log|sh|py|pl|po|pot|nginx|conf|db|cnf|sql|theme|bzr|git|hg|svn|cvs|tpl(\.php)?|xtmpl)$|^(Entries.*|Repository|Root|Tag|Template))$ {
+	return 444;
+}
+
+# Headers
+add_header X-Frame-Options "SAMEORIGIN";
+add_header X-XSS-Protection "1; mode=block";
+
+location = /ads.txt {
+    allow all;
+    log_not_found off;
+    access_log off;
+}
+
+# Webmail redirection
+location /webmail {
+    return 301 $scheme://webmail.HOST_DOMAIN$request_uri;
+}
+
+# Bad Bot Blocker
+include /etc/nginx/bots.d/ddos.conf;
+include /etc/nginx/bots.d/blockbots.conf;

@@ -1,0 +1,1 @@
+<?php require 'autodiscover.php'; ?>
