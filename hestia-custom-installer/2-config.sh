@@ -99,7 +99,7 @@ v-add-mail-account admin $HOST_EMAIL_DOMAIN postmaster $HOST_ADMIN_EMAIL_PASS
 v-add-mail-account-alias admin $HOST_EMAIL_DOMAIN postmaster abuse
 v-add-mail-account admin $HOST_EMAIL_DOMAIN webmaster $HOST_ADMIN_EMAIL_PASS
 v-add-mail-account admin $HOST_EMAIL_DOMAIN outgoing $HOST_ADMIN_EMAIL_PASS
-echo "root: admin@$HOST_EMAIL_DOMAIN" >> /etc/aliasses
+echo "root: admin@$HOST_EMAIL_DOMAIN" >> /etc/aliases
 
 # Autodiscover para emails
 echo "----- Configurando autodiscover para emails"
